@@ -7,76 +7,57 @@
    1. KPI GRID LAYOUT & METRIC CARDS
    -------------------------------------------------------------------------- */
 /* ==========================================================================
-   PERFECTED KPI GRID & METRIC CARDS (PIXEL-PERFECT FIX)
+   STAIRCASE ALIGNMENT FIX FOR KPI CARDS
    ========================================================================== */
 
 .kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-2);
-  margin-bottom: var(--space-3);
-  align-items: stretch;
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: var(--space-2) !important;
+  margin-bottom: var(--space-3) !important;
+  align-items: stretch !important; /* Forces all 4 cards to share the exact top/bottom boundary */
+  align-content: start !important;
 }
 
 .kpi-card {
-  padding: 18px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  min-height: 148px;
-  box-sizing: border-box;
+  padding: 18px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+  min-height: 148px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important; /* Removes any accidental top margin shifts */
+  transform: none; /* Prevents transform baseline offsets */
 }
 
-/* Header Row: Label + Badge */
+/* Header Row */
 .kpi-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  height: 24px;                  /* Fixed header height across all cards */
-  margin-bottom: 8px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  height: 24px !important;
+  margin-bottom: 8px !important;
 }
 
 .kpi-label {
-  font-size: 0.75rem;            /* Refined SaaS typography */
-  font-weight: 600;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
   color: #94a3b8 !important;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  height: 20px;                  /* Fixed badge height */
-  padding: 0 8px;
-  border-radius: 99px;
-  font-size: 0.625rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-/* Center Value Row */
+/* Counter Row */
 .kpi-value-container {
-  display: flex;
-  align-items: baseline;
-  height: 36px;                  /* Locks value container height */
-  margin: 4px 0 8px 0;
-}
-
-.currency-symbol {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: #64748b;
-  margin-right: 4px;
-  line-height: 1;
+  display: flex !important;
+  align-items: baseline !important;
+  height: 36px !important;
+  margin: 4px 0 8px 0 !important;
 }
 
 .kpi-counter {
@@ -84,24 +65,21 @@
   font-size: 1.75rem !important;
   font-weight: 800 !important;
   color: #ffffff !important;
-  letter-spacing: -0.03em;
-  line-height: 1;
+  letter-spacing: -0.03em !important;
+  line-height: 1 !important;
 }
 
 /* Footer Row */
 .kpi-footer {
-  font-size: 0.75rem;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  height: 20px;                  /* Fixed footer height */
-  margin-top: auto;              /* Pins footer to the bottom edge */
-  color: #94a3b8;
+  font-size: 0.75rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  height: 20px !important;
+  margin-top: auto !important; /* Pins bottom text on every card to the baseline */
+  color: #94a3b8 !important;
 }
 
-.wealth-multiplier {
-  color: #cbd5e1;
-}
 /* --------------------------------------------------------------------------
    2. MAIN DASHBOARD BODY SPLIT
    -------------------------------------------------------------------------- */
