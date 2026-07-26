@@ -7,7 +7,7 @@
    1. KPI GRID LAYOUT & METRIC CARDS
    -------------------------------------------------------------------------- */
 /* ==========================================================================
-   PERFECT KPI CARD ALIGNMENT PATCH
+   PERFECTED KPI GRID & METRIC CARDS (PIXEL-PERFECT FIX)
    ========================================================================== */
 
 .kpi-grid {
@@ -15,41 +15,68 @@
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-2);
   margin-bottom: var(--space-3);
-  align-items: stretch; /* Ensures all cards forced to equal height */
+  align-items: stretch;
 }
 
 .kpi-card {
-  padding: 16px 20px;
+  padding: 18px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  min-height: 145px;
+  min-height: 148px;
   box-sizing: border-box;
 }
 
-/* Fixes Badge and Title misalignment */
+/* Header Row: Label + Badge */
 .kpi-header {
   display: flex;
-  align-items: center;          /* Centers badges vertically with title text */
+  align-items: center;
   justify-content: space-between;
   gap: 8px;
-  min-height: 32px;              /* Standardizes header height across all cards */
+  height: 24px;                  /* Fixed header height across all cards */
+  margin-bottom: 8px;
 }
 
 .kpi-label {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;            /* Refined SaaS typography */
   font-weight: 600;
   color: #94a3b8 !important;
-  line-height: 1.2;
-  white-space: nowrap;          /* Prevents 'Projected Future Value' from wrapping to 2 lines */
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Number Container Baseline */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;                  /* Fixed badge height */
+  padding: 0 8px;
+  border-radius: 99px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Center Value Row */
 .kpi-value-container {
   display: flex;
   align-items: baseline;
-  margin: 8px 0 4px 0;
+  height: 36px;                  /* Locks value container height */
+  margin: 4px 0 8px 0;
+}
+
+.currency-symbol {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-right: 4px;
+  line-height: 1;
 }
 
 .kpi-counter {
@@ -61,19 +88,19 @@
   line-height: 1;
 }
 
-/* Pushes all footers to the absolute bottom of the card */
+/* Footer Row */
 .kpi-footer {
   font-size: 0.75rem;
   display: flex;
   align-items: center;
   gap: 6px;
-  min-height: 20px;
-  margin-top: auto;              /* Locks footers to same horizontal line across all cards */
+  height: 20px;                  /* Fixed footer height */
+  margin-top: auto;              /* Pins footer to the bottom edge */
+  color: #94a3b8;
 }
 
-.badge {
-  white-space: nowrap;          /* Keeps badges from wrapping */
-  flex-shrink: 0;
+.wealth-multiplier {
+  color: #cbd5e1;
 }
 /* --------------------------------------------------------------------------
    2. MAIN DASHBOARD BODY SPLIT
