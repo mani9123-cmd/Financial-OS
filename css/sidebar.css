@@ -1,0 +1,253 @@
+/* ==========================================================================
+   FINANCIAL OS — SIDEBAR NAVIGATION ARCHITECTURE
+   Inspired by Linear & Notion Collapsible Workspace Panels
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. SIDEBAR WRAPPER & CONTAINER LAYOUT
+   -------------------------------------------------------------------------- */
+.sidebar-wrapper {
+  width: var(--sidebar-width);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(9, 13, 22, 0.85);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-right: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+  transition: width var(--transition-normal);
+  user-select: none;
+}
+
+/* --------------------------------------------------------------------------
+   2. BRAND HEADER & TOGGLE BUTTON
+   -------------------------------------------------------------------------- */
+.sidebar-header {
+  height: var(--top-nav-height);
+  padding: 0 var(--space-2-5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1-5);
+}
+
+.logo-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #3b82f6 100%);
+  box-shadow: 0 0 14px var(--accent-glow);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.logo-mark::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 2px solid #ffffff;
+  border-radius: 3px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+}
+
+.brand-title {
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+.brand-tagline {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   3. NAVIGATION MENU & CATEGORY HEADERS
+   -------------------------------------------------------------------------- */
+.sidebar-menu {
+  flex: 1;
+  padding: var(--space-2) var(--space-1-5);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0-5);
+}
+
+.menu-category {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  padding: var(--space-2) var(--space-1-5) var(--space-0-5);
+  white-space: nowrap;
+}
+
+.nav-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1-5);
+  padding: var(--space-1-5) var(--space-1-5);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.nav-item.active {
+  background: rgba(99, 102, 241, 0.12);
+  color: #818cf8;
+  font-weight: 600;
+  border-left: 3px solid var(--accent-primary);
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.nav-item svg {
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.nav-item:hover svg {
+  transform: scale(1.1);
+}
+
+/* --------------------------------------------------------------------------
+   4. SIDEBAR FOOTER & FINANCIAL HEALTH WIDGET
+   -------------------------------------------------------------------------- */
+.sidebar-footer {
+  padding: var(--space-2);
+  border-top: 1px solid var(--glass-border);
+}
+
+.health-mini-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1-5);
+  padding: var(--space-1-5);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.health-mini-card:hover {
+  border-color: var(--glass-border-light);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.health-ring-mini {
+  width: 38px;
+  height: 38px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.circular-chart {
+  width: 100%;
+  height: 100%;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 3.8;
+}
+
+.circle {
+  fill: none;
+  stroke: var(--color-success);
+  stroke-width: 3.8;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.6s var(--ease-apple);
+}
+
+.health-mini-score {
+  position: absolute;
+  font-size: 0.75rem;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-primary);
+}
+
+.health-mini-text {
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+}
+
+.health-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.health-status {
+  font-size: 0.6875rem;
+  color: var(--color-success);
+}
+
+/* --------------------------------------------------------------------------
+   5. COLLAPSED SIDEBAR STATE
+   -------------------------------------------------------------------------- */
+.sidebar-wrapper.collapsed {
+  width: var(--sidebar-collapsed-width);
+}
+
+.sidebar-wrapper.collapsed .brand-text,
+.sidebar-wrapper.collapsed .menu-category,
+.sidebar-wrapper.collapsed .nav-item span,
+.sidebar-wrapper.collapsed .health-mini-text {
+  display: none;
+}
+
+.sidebar-wrapper.collapsed .sidebar-header {
+  justify-content: center;
+}
+
+.sidebar-wrapper.collapsed #sidebarToggle {
+  transform: rotate(180deg);
+}
+
+.sidebar-wrapper.collapsed .nav-item {
+  justify-content: center;
+  padding: var(--space-1-5);
+}
+
+.sidebar-wrapper.collapsed .health-mini-card {
+  justify-content: center;
+  padding: var(--space-1);
+}
