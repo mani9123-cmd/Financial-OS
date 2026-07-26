@@ -33,32 +33,40 @@ const UIEngine = {
   /**
    * GSAP entrance animations for dashboard panels and KPI cards
    */
+ /**
+   * GSAP entrance animations for dashboard panels and KPI cards
+   */
   animateEntrance() {
     if (typeof gsap === 'undefined') return;
 
-    gsap.from('[data-gsap="kpi"]', {
-      duration: 0.8,
-      y: 20,
-      opacity: 0,
-      stagger: 0.08,
-      ease: 'power3.out'
-    });
+    gsap.fromTo('[data-gsap="kpi"]', 
+      { y: 20, opacity: 0 },
+      {
+        duration: 0.8,
+        y: 0,
+        opacity: 1,
+        stagger: 0.08,
+        ease: 'power3.out',
+        clearProps: 'transform' // Automatically removes inline CSS transform after animation completes!
+      }
+    );
 
     gsap.from('.controls-card', {
       duration: 0.9,
       x: -30,
       opacity: 0,
-      ease: 'power3.out'
+      ease: 'power3.out',
+      clearProps: 'transform'
     });
 
     gsap.from('.chart-display-card', {
       duration: 0.9,
       x: 30,
       opacity: 0,
-      ease: 'power3.out'
+      ease: 'power3.out',
+      clearProps: 'transform'
     });
   },
-
   /**
    * Dynamic rule-based AI Financial Coach Insight Generator
    * @param {Object} results - Calculation output matrix from FinancialEngine
