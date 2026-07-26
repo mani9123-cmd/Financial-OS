@@ -6,65 +6,66 @@
 /* --------------------------------------------------------------------------
    1. KPI GRID LAYOUT & METRIC CARDS
    -------------------------------------------------------------------------- */
+/* ==========================================================================
+   FIXED: PERFECT KPI GRID ALIGNMENT
+   ========================================================================== */
+
 .kpi-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-2);
   margin-bottom: var(--space-3);
+  align-items: stretch; /* Forces all 4 cards to match the exact same height */
 }
 
 .kpi-card {
-  padding: var(--space-2-5);
+  padding: 18px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 130px;
+  justify-content: space-between; /* Equal spacing top, middle, bottom */
+  height: 100%;                   /* Takes full height of grid row */
+  min-height: 140px;              /* Standardizes card baseline */
+  box-sizing: border-box;
 }
 
 .kpi-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;       /* Align label and badge nicely at top */
   justify-content: space-between;
+  gap: 8px;
+  min-height: 28px;               /* Prevents title height shifts */
 }
 
 .kpi-label {
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: #94a3b8 !important;
+  line-height: 1.2;
 }
 
 .kpi-value-container {
   display: flex;
   align-items: baseline;
-  margin: var(--space-1-5) 0 var(--space-0-5);
-}
-
-.currency-symbol {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  margin-right: var(--space-0-5);
+  margin: 10px 0 6px 0;
 }
 
 .kpi-counter {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.75rem;
-  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 1.75rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
   letter-spacing: -0.03em;
-  color: var(--text-primary);
+  line-height: 1;
 }
 
 .kpi-footer {
   font-size: 0.75rem;
   display: flex;
   align-items: center;
-  gap: var(--space-0-5);
+  gap: 6px;
+  min-height: 20px;              /* Locks footer row height so values align across cards */
+  margin-top: auto;              /* Pushes footer cleanly to the bottom edge */
 }
-
-.wealth-multiplier {
-  color: var(--text-secondary);
-}
-
 /* --------------------------------------------------------------------------
    2. MAIN DASHBOARD BODY SPLIT
    -------------------------------------------------------------------------- */
